@@ -65,15 +65,13 @@ const images = [
     ];
     
 const galleryMarkUp = document.querySelector('.gallery');
-
-
 const imageItem = images
-    .map(image => `<li class="gallary-item">
-    <a class = "gallary-linc" href ="large-image.jpg">
+    .map(image => `<li class="gallery-item">
+    <a class = "gallery-link" href ="${image.original}">
     <img
     src="${image.preview}" 
     alt="${image.description}" 
-    source="${image.original}"/>
+    data-source="${image.original}"/>
     </a>
     </li>`)
     .join("");
@@ -81,3 +79,15 @@ const imageItem = images
 
 galleryMarkUp.insertAdjacentHTML("beforeend", imageItem);
 console.log(galleryMarkUp);
+
+const galleryEvent = document.querySelector(".gallery");
+galleryEvent.addEventListener("click", handleClick);
+
+function handleClick(event) {
+    event.preventDefault();
+    if (event.currentTarget === event.target) {
+        return
+    }
+    const largeImage = event.target.dataset.source; 
+    console.log("Large image source:", largeImage);
+}
