@@ -64,3 +64,20 @@ const images = [
       },
     ];
     
+const galleryMarkUp = document.querySelector('.gallery');
+
+
+const imageItem = images
+    .map(image => `<li class="gallary-item">
+    <a class = "gallary-linc" href ="large-image.jpg">
+    <img
+    src="${image.original}" 
+    alt="${image.description}" 
+    source="${image.preview}"/>
+    </a>
+    </li>`)
+    .join("");
+  
+
+galleryMarkUp.insertAdjacentHTML("beforeend", imageItem);
+console.log(galleryMarkUp);
