@@ -71,9 +71,9 @@ const imageItem = images
     .map(image => `<li class="gallary-item">
     <a class = "gallary-linc" href ="large-image.jpg">
     <img
-    src="${image.original}" 
+    src="${image.preview}" 
     alt="${image.description}" 
-    source="${image.preview}"/>
+    source="${image.original}"/>
     </a>
     </li>`)
     .join("");
