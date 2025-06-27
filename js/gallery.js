@@ -69,9 +69,9 @@ const imageItem = images
     .map(image => `<li class="gallery-item">
     <a class = "gallery-link" href ="${image.original}">
     <img
-    src="${image.preview}" 
+    src="${image.original}" 
     alt="${image.description}" 
-    data-source="${image.original}"/>
+    data-source="${image.preview}"/>
     </a>
     </li>`)
     .join("");
@@ -89,5 +89,11 @@ function handleClick(event) {
         return
     }
     const largeImage = event.target.dataset.source; 
-    console.log("Large image source:", largeImage);
+
+    const instance = basicLightbox.create(`
+        <div class="modal">
+        <img class="modal-img" src="${largeImage}"/>
+        </div>
+    `)
+    instance.show()
 }
