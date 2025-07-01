@@ -67,7 +67,7 @@ const images = [
 const galleryMarkUp = document.querySelector('.gallery');
 const imageItem = images
     .map(image => `<li class="gallery-item">
-    <a class = "gallery-link" href ="${image.preview}">
+    <a class = "gallery-link" href ="${image.original}">
     <img
     src="${image.preview}" 
     alt="${image.description}" 
@@ -76,7 +76,6 @@ const imageItem = images
     </li>`)
     .join("");
   
-
 galleryMarkUp.insertAdjacentHTML("beforeend", imageItem);
 console.log(galleryMarkUp);
 
@@ -85,11 +84,10 @@ galleryEvent.addEventListener("click", handleClick);
 
 function handleClick(event) {
     event.preventDefault();
-    if (event.currentTarget === event.target) {
+    if (event.target.nodeName !== "IMG") {
         return
     }
     const largeImage = event.target.dataset.source; 
-
     const instance = basicLightbox.create(`
         <div class="modal">
         <img class="modal-img" src="${largeImage}"/>
